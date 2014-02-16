@@ -1,14 +1,3 @@
-Hello Everyone
-
-# Bloccit
-
-This is A Reddit-style application to demonstrate foundation programming and web development skills.
-
-Made with my mentor  at [Bloc](http://bloc.io)
-
-
-
-
 == Welcome to Rails
 
 Rails is a web-application framework that includes everything needed to create
