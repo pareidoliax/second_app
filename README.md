@@ -4,8 +4,11 @@ Hello Everyone
 
 This is A Reddit-style application to demonstrate foundation programming and web development skills.
 
-Made with my mentor  at [Bloc](http://bloc.io)
+Made with my mentor at [Bloc](http://bloc.io)
 
+# The Process
+
+1. Learned about how controllers and viewers work in Ruby
 
 
 
