@@ -1,26 +1,25 @@
 class PostsController < ApplicationController
   def index
-      @posts = Post.all
+    @posts = Post.all
   end
 
   def show
-      @post = Post.find(params[:id])
   end
 
   def new
-      @post = Post.new
+    @post = Post.new
   end
 
   def create
-    @post = Post.new(params[:post])
-    if @post.save
-        flash[:notice] = "Post was saved."
-        redirect_to @post
-    else
-        flash[:error] = "Error saving post, please try again"
-        render :new
-    end
+  @post = Post.new(params[:post])
+  if @post.save
+    flash[:notice] = "Post was saved."
+    redirect_to @post
+  else
+    flash[:error] = "There was an error saving the post. Please try again."
+    render :new
   end
+end
 
   def edit
     @post = Post.find(params[:id])
@@ -29,10 +28,11 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update_attributes(params[:post])
-      flash[:notice] = "Post was updated"
+      flash[:notice] = "Post was updated."
       redirect_to @post
     else
-      flasj[:error] = "There was an error saving the post, Please Try Again"
+      flash[:error] = "There was an error saving the post. Please try again."
       render :edit
     end
+  end
 end
