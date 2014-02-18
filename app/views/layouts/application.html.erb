@@ -12,8 +12,25 @@
         <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "About", about_path %></li>
       </ul>
+      
+    <%= if flash[:notice] %>
+      <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash[:notice] %>
+      </div>
+    <%= elsif flash[:error] %>
+      <div class="alert alert-error">
+        <button type="button" class="close" data-dismis="alert">&times;</button>
+        <%= flash[:error] %>
+      </div>
+    <% elsif flash[:alert] %>
+      <div class="alert">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
 
-      <%= yield %>
+    <%= yield %>
       <!-- by putting yield it directs to app/views/welcome directory, where you can set diffirent tags or how ever you want your site to look like-->
   </div>
 
