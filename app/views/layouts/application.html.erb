@@ -9,12 +9,13 @@
 <body>
   <div class="container">
     <ul class="nav nav-tabs">
-        <li><%= link_to "Bloccit", welcome_index_path %></li>
+        <li><%= link_to "Home", welcome_index_path %></li>
         <li><%= link_to "About", welcome_about_path %></li>
       </ul>
-      
+      <!-- this links up to the welcome folder under the app/views/welcome directory and tells you what html to use. -->
+
       <%= yield %>
-      <!-- by putting yield first it takes the index and about pages then the list is written under it -->
+      <!-- by putting yield it directs to app/views/welcome directory, where you can set diffirent tags or how ever you want your site to look like-->
   </div>
 
   </body>
