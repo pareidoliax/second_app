@@ -1,3 +1,4 @@
+ruby "2.1.0"
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
@@ -45,3 +46,4 @@ gem 'jquery-rails'
 
 
 gem 'faker'
+gem 'rails_12factor'
