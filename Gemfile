@@ -45,6 +45,7 @@ gem 'jquery-rails'
 # gem 'debugger'
 
 gem 'newrelic_rpm'
-gem 'devise'
 gem 'faker'
+gem 'devise'
 gem 'rails_12factor'
+

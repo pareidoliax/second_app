@@ -1,8 +1,7 @@
-<h2>Sign up</h2>
+<h2>Sign in</h2>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-horizontal'}) do |f| %>
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-horizontal'}) do |f| %>
   <%= devise_error_messages! %>
-
   <div class="control-group">
     <%= f.label :email, class: 'control-label' %>
     <div class="controls">
@@ -16,18 +15,13 @@
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :password_confirmation, class: 'control-label' %>
     <div class="controls">
-      <%= f.password_field :password_confirmation %>
+      <%= f.submit "Sign in", class: 'btn' %>
     </div>
   </div>
-  <div class="control-group">
-    <div class="controls">
-      <%= f.submit "Sign up", class: 'btn' %>
-    </div>
-  </div> 
   <div class="control-group">
     <div class="controls">
       <%= render "devise/shared/links" %>
     </div>
   </div>
+<% end %>
