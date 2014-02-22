@@ -9,10 +9,12 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    authorize! :create, Post, message: "You need to be a memeber to create a new post, please join."
   end
 
   def create
   @post = Post.new(params[:post])
+  authorize! :create, @post, message: "You need to be signed in order to do that."
   if @post.save
     flash[:notice] = "Post was saved."
     redirect_to @post

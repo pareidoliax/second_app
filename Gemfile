@@ -48,4 +48,5 @@ gem 'newrelic_rpm'
 gem 'faker'
 gem 'devise'
 gem 'rails_12factor'
+gem 'cancan'
 
