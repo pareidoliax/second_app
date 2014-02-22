@@ -1,12 +1,7 @@
 class Ability
   include CanCan::Ability
 
-  ROLES = %w[member moderator admin]
-  def role?(base_role)
-      role.nil? ? false : ROLES.index(base_role.to_s) <= ROLES.index(role)
-  end
-
-  def initialize(user)
+def initialize(user)
     user ||= User.new # guest user
     
     # if a member, they can manager their own posts (or create new ones)
