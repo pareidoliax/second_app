@@ -17,7 +17,7 @@ def initialize(user)
     end
 
     # Admin can do anything.
-    if user.role :admin
+    if user.role? :admin
         can :manage, :all
     end
 
