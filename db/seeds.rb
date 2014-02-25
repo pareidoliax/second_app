@@ -45,11 +45,11 @@ end
 u = User.new(
   name: 'Admin User',
   email: 'admin@example.com',
-  passwod: 'helloworld',
+  password: 'helloworld',
   password_confirmation: 'helloworld')
 u.skip_confirmation!
 u.save
-u.update_attribute(:role, 'admin')
+u.update_attribute(role: 'admin')
 
 u = User.new(
   name: 'Moderator User',
@@ -58,12 +58,12 @@ u = User.new(
   password_confirmation: 'helloworld')
 u.skip_confirmation!
 u.save
-u.update_attribute(role:, 'moderator')
+u.update_attribute(role: 'moderator')
 
 u = User.new(
   name: 'Member User',
   email: 'member@example.com',
-  passwod: 'helloworld',
+  password: 'helloworld',
   password_confirmation: 'helloworld')
 u.skip_confirmation!
 u.save

@@ -1,23 +1,27 @@
 class TopicsController < ApplicationController
+  
   def index
     @topics = Topic.all
   end
 
   def new
-    @topics = Topic.new
+    @topic = Topic.new
     authorize! :create, @topic, message: "You need to be an admin to do that."
   end
 
   def show
     @topic = Topic.find(params[:id])
+    @posts = @topic.posts
   end
 
   def edit
     @topic = Topic.find(params[:id])
+    authorize! :update, @topic, message: "You need to be an admin to do that."
   end
 
   def create
     @topic = Topic.new(params[:id])
+    authorize! :create, @topic, message: "You need to be an admin to do that."
     if @topic.save
       redirect_to @topic, notice: "Topic was save successfully."
     else
@@ -28,11 +32,12 @@ end
 
   def update
     @topic = Topic.find(params[:id])
+    authorize! :update, @topic, message: "You need to be an admin to do that."
     if @topic.update_attributes(params[:id])
-      redirect_to @topic, notice: "Topic was saved successfully"
+      redirect_to @topic, notice: "Topic was saved successfully."
     else
-      flash[:error] = "Error saving topoc, Please try again."
+      flash[:error] = "Error saving topic, Please try again."
       render :edit
     end
- end
+  end
 end
