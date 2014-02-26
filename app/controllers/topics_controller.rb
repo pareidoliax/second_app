@@ -20,7 +20,7 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = Topic.new(params[:id])
+    @topic = Topic.new(params[:topic])
     authorize! :create, @topic, message: "You need to be an admin to do that."
     if @topic.save
       redirect_to @topic, notice: "Topic was save successfully."
@@ -33,7 +33,7 @@ end
   def update
     @topic = Topic.find(params[:id])
     authorize! :update, @topic, message: "You need to be an admin to do that."
-    if @topic.update_attributes(params[:id])
+    if @topic.update_attributes(params[:topic])
       redirect_to @topic, notice: "Topic was saved successfully."
     else
       flash[:error] = "Error saving topic, Please try again."

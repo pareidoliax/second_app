@@ -29,7 +29,7 @@ class PostsController < ApplicationController
       flash[:error] = "There was an error saving the post. Please try again."
       render :new
     end
-end
+  end
 
   def update
     @topic = Topic.find(params[:topic_id])
