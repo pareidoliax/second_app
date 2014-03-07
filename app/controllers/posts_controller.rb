@@ -3,9 +3,11 @@ class PostsController < ApplicationController
   def show
     @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:id])
+    @comment = Comment.find(params[:id])
   end
 
   def new
+    @comment = Comment.new
     @topic = Topic.find(params[:topic_id])
     @post = Post.new
     authorize! :create, Post, message: "You need to be a memeber to create a new post, please join."
@@ -21,6 +23,7 @@ class PostsController < ApplicationController
     @topic = Topic.find(params[:topic_id])
     @post = current_user.posts.build(params[:post])
     @post.topic = @topic
+    @comment = Comment.find(params[:id])
 
     authorize! :create, @post, message: "You need to be signed in order to do that."
     if @post.save
@@ -42,4 +45,19 @@ class PostsController < ApplicationController
       render :new
     end
   end
+
+    def destroy
+      @topic = Topic.find(params[:topic_id])
+      @post = Post.find(params[:id])
+
+      title = @post.title
+      authorize! :destroy, @post, message: "You need to own the post to delete it."
+      if @post.destroy
+        flash[:notice] = "\"#{title}\" was deleted successfully."
+        redirect_to @topic
+      else
+        flash[:error] = "There was an error deleting the post."
+        render :show
+      end
+    end
 end
