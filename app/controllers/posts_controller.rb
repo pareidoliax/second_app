@@ -3,11 +3,9 @@ class PostsController < ApplicationController
   def show
     @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:id])
-    @comment = Comment.find(params[:id])
   end
 
   def new
-    @comment = Comment.new
     @topic = Topic.find(params[:topic_id])
     @post = Post.new
     authorize! :create, Post, message: "You need to be a memeber to create a new post, please join."
@@ -23,7 +21,6 @@ class PostsController < ApplicationController
     @topic = Topic.find(params[:topic_id])
     @post = current_user.posts.build(params[:post])
     @post.topic = @topic
-    @comment = Comment.find(params[:id])
 
     authorize! :create, @post, message: "You need to be signed in order to do that."
     if @post.save
