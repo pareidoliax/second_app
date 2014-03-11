@@ -32,13 +32,9 @@ rand(4..10).times do
       body: Faker::Lorem.paragraphs(rand(1..4)).join("\n"))
     # set the created_at to a time within the past year
     p.update_attribute(:created_at, Time.now - rand(600..31536000))
+    p.update_rank
 
     topics.rotate! 
-
-    rand(3..7).times do
-      p.comments.create(
-        body: Faker::Lorem.paragraphs(rand(1..2)).join("\n"))
-    end
   end
 end
 
@@ -46,7 +42,8 @@ u = User.new(
   name: 'Admin User',
   email: 'admin@example.com',
   password: 'helloworld',
-  password_confirmation: 'helloworld')
+  password_confirmation: 'helloworld',
+)
 u.skip_confirmation!
 u.save
 u.update_attribute(role: 'admin')
@@ -60,6 +57,7 @@ u.skip_confirmation!
 u.save
 u.update_attribute(role: 'moderator')
 
+
 u = User.new(
   name: 'Member User',
   email: 'member@example.com',
@@ -67,7 +65,15 @@ u = User.new(
   password_confirmation: 'helloworld')
 u.skip_confirmation!
 u.save
+
+user_array = User.all
+Comment.all.each do |comment|
+  random_user = user_array[rand(user_array.length)]
+  comment.user_id = random_user.user_id
+  comment.save
+end
 puts "Seed finished"
 puts "#{User.count} users created"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
+
