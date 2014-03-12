@@ -16,24 +16,24 @@ end
 
 # Gems used only for assets and not required
 # in production environments by default.
-group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-  gem 'bootstrap-sass', '~> 2.3.1.0'
   gem 'uglifier', '>= 1.0.3'
+  gem 'jquery-rails'
+  gem 'turbolinks'
+  gem 'jbuilder', '~> 1.2'
+
+group :doc do
+  gem 'sdoc', require: false
 end
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
-
-gem 'jquery-rails'
-
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use Jbuilder templates for JSON
-# gem 'jbuilder'
 
 # Use unicorn as the app server
 # gem 'unicorn'
@@ -43,7 +43,7 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
-
+gem 'bootstrap-sass', '~> 3.1.1'
 gem 'newrelic_rpm'
 gem 'faker'
 gem 'devise'
@@ -56,3 +56,4 @@ gem 'fog'
 gem 'figaro'
 gem 'will_paginate', '~> 3.0'
 gem 'omniauth-facebook'
+gem 'pundit'
