@@ -1,6 +1,6 @@
 <%= form_for [topic, post, comment] do |f| %>
   <fieldset>
-     <h3>Add Comment</h3>
+     <legend>Add Comment</legend>
      <% if post.errors.any? %>
      <div class="alert alert-block">
        <h4>There are <%= pluralize(post.errors.count, "error") %>.</h4>
