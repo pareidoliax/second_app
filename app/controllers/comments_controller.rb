@@ -18,8 +18,7 @@ class CommentsController < ApplicationController
     end
   end
 
-  #  _comment
-   # _form
+
 
   def destroy
     @topic = Topic.find(params[:topic_id])

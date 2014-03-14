@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :comments
   has_many :votes, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   
 
   before_create :set_member
@@ -22,9 +23,14 @@ class User < ActiveRecord::Base
     role.nil? ? false : ROLES.index(base_role.to_s) <= ROLES.index(role)
   end
 
-  private
 
   def set_member
     self.role = 'member'
   end
+
+  def favorited(post)
+    self.favorites.where(post_id: post.id).first
+  end
+
+  private
 end

@@ -1,0 +1,10 @@
+
+<div class="favorite">
+  <% if favorite = current_user.favorited(post) %>
+    <%= link_to [topic, post, favorite], class: 'btn btn-danger', method: :delete do %><i class="fa fa-star-o"></i>&nbsp; Unlike 
+    <% end %>
+  <% else %>
+    <%= link_to [topic, post, Favorite.new], class: 'btn btn-primary', method: :post do %><i class="fa fa-star"></i>&nbsp; Like 
+    <% end %>
+  <% end %>
+</div>

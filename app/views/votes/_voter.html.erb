@@ -1,6 +1,6 @@
 
   <div class="vote-arrows pull-left">
     <div><%= link_to " ", topic_post_up_vote_path(topic, post), class: 'fa fa-angle-up' %></div>
-    <div><strong><%= post.points %></strong></div>
+    <div><%= post.points %></div>
     <div><%= link_to " ", topic_post_down_vote_path(topic, post), class: 'fa fa-angle-down' %></div>
   </div>
