@@ -5,7 +5,7 @@
 <% end %>
 
 <div class="row">
-  <div class"span8">
+  <div class"span6">
     <p class="lead"><%= @topic.description %></p>
     <% @posts.each do |post| %>
       <div class="media">
@@ -25,7 +25,7 @@
     <% end %>
     <%= will_paginate @posts %>
   </div>
-  <div class="span4">
+  <div class="span3">
     <% if can? :create, Post %>
       <%= link_to "New Post", new_topic_post_path(@topic), class: 'btn btn-large btn-block' %>
     <% end %>

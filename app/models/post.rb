@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  attr_accessible :body, :title, :topic, :image
+  attr_accessible :body, :title, :topic, :image, :rank, :value, :user, :vote
   has_many :comments, dependent: :destroy
   has_many :votes, dependent: :destroy
   belongs_to :user
@@ -13,7 +13,10 @@ class Post < ActiveRecord::Base
   validates :user, presence: true
 
   after_create :create_vote
-  private
+  def points
+    self.votes.sum(:value).to_i
+  end
+
   mount_uploader :image, ImageUploader
 
   def up_votes
@@ -22,10 +25,6 @@ class Post < ActiveRecord::Base
 
   def down_votes
     self.votes.where(value: -1).count
-  end
-
-  def points
-    self.votes.sum(:value).to_i
   end
 
   def update_rank
