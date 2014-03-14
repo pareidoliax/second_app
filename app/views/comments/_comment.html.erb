@@ -1,0 +1,11 @@
+<fieldset>
+  <div class="span8">
+    <div class="well">
+      <%= comment.user.name %>
+      <p><%= comment.body %></p>
+    </div>
+  </div>
+  <% if can? :destroy, comment %>
+    <%= link_to "Delete", comment_url_helper(comment), method: :delete %>
+  <% end %>
+</fieldset>

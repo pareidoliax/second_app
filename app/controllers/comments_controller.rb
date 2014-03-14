@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     @comment.post = @post #bind @comment to @post
     @comments = @post.comments
     
-    authroize! :create, @comment, message: "You need to be signed up to comment." #prepare @comment (bound to user)
+    authorize! :create, @comment, message: "You need to be signed up to comment." #prepare @comment (bound to user)
     if @comment.save
       flash[:notice] = "Comment has been added." #redirect
       redirect_to [@topic, @post]
