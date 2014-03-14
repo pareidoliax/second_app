@@ -3,7 +3,7 @@ class FavoritesController < ApplicationController
     @topic = Topic.find(params[:topic_id])
     @post = @topic.posts.find(params[:post_id])
     favorite = current_user.favorites.build(post: @post)
-   
+
     if favorite.save
       flash[:notice] = "Favorited post"
       redirect_to [@topic, @post]
@@ -17,7 +17,7 @@ class FavoritesController < ApplicationController
     @topic = Topic.find(params[:topic_id])
     @post = @topic.posts.find(params[:post_id])
     @favorite = current_user.favorites.find(params[:id])
-    
+
     if @favorite.destroy
       flash[:notice] = "Removed favorite."
       redirect_to [@topic, @post]
